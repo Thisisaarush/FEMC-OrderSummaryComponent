@@ -1,0 +1,178 @@
+// Font Import
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap");
+
+// Variables
+$primary-bright-color: hsl(245, 75%, 52%);
+$primary-pale-color: hsl(225, 100%, 94%);
+
+$neutral-pale-color: hsl(225, 100%, 98%);
+$neutral-desaturated-color: hsl(224, 23%, 55%);
+$neutral-dark-color: hsl(223, 47%, 23%);
+$font-weight: (
+  medium: 500,
+  bold: 700,
+  bolder: 900,
+);
+$font-size-body: 16px;
+$border-radius: 20px;
+$border-radius-button: 12px;
+
+
+// Styling
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Red Hat Display", sans-serif;
+  background: linear-gradient(to bottom, rgb(200, 200, 255),  #f0f0ff);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  width: 450px;
+  height: auto;
+  background: white;
+  border-radius: $border-radius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px 0px hsla(245, 42%, 30%, 0.25);
+
+  .image-container img {
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  .title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+
+    .title {
+      font-weight: map-get($font-weight, bolder);
+      color: $neutral-dark-color;
+    }
+    .subtitle {
+      font-weight: map-get($font-weight, medium);
+      text-align: center;
+      color: $neutral-desaturated-color;
+      margin-top: 0px;
+    }
+  }
+
+  .price-card {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: $neutral-pale-color;
+    border-radius: $border-radius;
+    padding: 7px;
+
+    .price-card-text {
+      width: 50%;
+
+      .card-title {
+        color: $neutral-dark-color;
+        font-weight: map-get($font-weight, bolder );
+      }
+      .card-price {
+        color: $neutral-desaturated-color;
+        font-weight: map-get($font-weight, medium );
+        margin-top: -15px;
+      }
+    }
+
+    & > a {
+      color: $primary-bright-color;
+      font-weight: map-get($font-weight, bolder );
+
+      &:hover {
+        text-decoration: none;
+        color: lighten($color: $primary-bright-color, $amount: 10);
+      }
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 30px;
+
+    .primary-button {
+      width: 350px;
+      height: 50px;
+      background-color: $primary-bright-color;
+      color: white;
+      border-radius: $border-radius-button;
+      box-shadow: 0 20px 30px 0px hsla(245, 75%, 52%, 0.25);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: map-get($font-weight, bold );
+
+      &:hover {
+        cursor: pointer;
+        background-color: lighten($color: $primary-bright-color, $amount: 10);
+      }
+    }
+    .secondary-button {
+      width: 350px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: map-get($font-weight, bold );
+      color: $neutral-desaturated-color;
+      margin-top: 10px;
+
+      &:hover {
+        cursor: pointer;
+        color: darken($color: $neutral-desaturated-color, $amount: 50);
+      }
+    }
+  }
+}
+
+
+
+// Mobile compatability/Design
+@media screen and (max-width: 600px) {
+  .card-container {
+    width: 95%;
+
+    .image-container img {
+      width: 100%;
+    }
+
+    .title-container {
+      width: 75%;
+      
+      .title {
+        font-size: 1.7rem;
+      }
+      .subtitle {
+        font-size: 1.1rem;
+      }
+    }
+
+    .price-card {
+      width: 95%;
+    }
+
+    .button-container .primary-button {
+      width: 90%;
+    }
+  }
+}
